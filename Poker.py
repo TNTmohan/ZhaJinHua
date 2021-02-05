@@ -9,7 +9,7 @@ class Card:
         self._value = Poker.ranks.index(rank) * 10 + Poker.suits.index(suit)
 
     def __str__(self):
-        return self._suit + ' ' + self._rank
+        return self._suit + self._rank
 
     def __lt__(self, other):
         return self.getValue() < other.getValue()
@@ -36,7 +36,7 @@ class Card:
 
 class Poker:
     ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-    suits = ['spades', 'diamonds', 'clubs', 'hearts']
+    suits = ['♦', '♥', '♣', '♠']
 
     def __init__(self):
         self._cards = [Card(suit, rank) for suit in self.suits for rank in self.ranks]
@@ -54,7 +54,7 @@ class Poker:
         print('Poker has been cut.')
 
     def reset(self):
-        self._cards = [Card(suit, rank) for suit in self._suits for rank in self._ranks]
+        self._cards = [Card(suit, rank) for suit in self.suits for rank in self.ranks]
 
     def showAllCard(self):
         [print(card) for card in self._cards]
